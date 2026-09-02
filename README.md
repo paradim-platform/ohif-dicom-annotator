@@ -26,9 +26,15 @@ Developed and tested against **OHIF 3.11.1** (peer dependencies `^3.10.2`).
   bidirectional, etc.), and an enhanced segmentation table.
 - New segmentations and segments start with the placeholder label `TODO`, so un-annotated segments
   are easy to spot.
+
+  <img src="images/fig-segmentation-panel.png" alt="Segmentation panel with a drawn segment labeled 'solid pulmonary nodule'" width="500">
+
 - Clicking **Edit** on a segment opens a questionnaire dialog built from your configuration: one
   dropdown per question, an optional free-text comment, and questions that can conditionally
   show/hide based on previous answers. Re-opening a segment restores its previously saved answers.
+
+  <img src="images/fig-characteristics-form.png" alt="Edit Segmentation Characteristics dialog with a list of coded questions" width="400">
+
 - One designated question drives the segment's **label** and **color** automatically, so the same
   finding type always looks the same across readers and cases.
 - The segmentation menu gains two actions:
