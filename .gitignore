@@ -4,3 +4,10 @@
 !.gitignore
 !LICENSE
 
+!extensions/
+!extensions/**
+
+!modes/
+!modes/**
+
+node_modules/
