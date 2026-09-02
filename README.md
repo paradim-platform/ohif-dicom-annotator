@@ -22,8 +22,8 @@ the code is lung-specific except the shipped example configuration.
 
 | Package | Type | Path | Description |
 | --- | --- | --- | --- |
-| `segmentation-workflow` | OHIF extension | `custom/extensions/segmentation-workflow` | The annotation panel, the questionnaire dialog, the characteristic store and the DICOM SEG/SR writers. |
-| `seg-workflow` | OHIF mode | `custom/modes/seg-workflow` | A CT-only viewer mode that wires the panel, the toolbars and the segmentation tool groups together. |
+| `segmentation-workflow` | OHIF extension | `extensions/segmentation-workflow` | The annotation panel, the questionnaire dialog, the characteristic store and the DICOM SEG/SR writers. |
+| `seg-workflow` | OHIF mode | `modes/seg-workflow` | A CT-only viewer mode that wires the panel, the toolbars and the segmentation tool groups together. |
 
 Developed and tested against **OHIF 3.11.1** (peer dependencies `^3.10.2`).
 
@@ -145,7 +145,7 @@ annotations are stored anonymously** — they are still valid DICOM.
 
 Everything the reader is asked lives in the OHIF app config (e.g. `public/config/default.js` or your
 deployed `app-config.js`). A working example is provided in
-[`custom-ohif-conf/app-config.js`](custom-ohif-conf/app-config.js).
+[`app-config.js`](app-config.js).
 
 ```js
 window.config = {
@@ -221,8 +221,8 @@ The extension and the mode are consumed as local packages of an OHIF monorepo ch
 # from the root of your OHIF Viewers checkout
 git clone <this-repo> custom
 
-yarn cli link-extension ./custom/extensions/segmentation-workflow
-yarn cli link-mode      ./custom/modes/seg-workflow
+yarn cli link-extension ./extensions/segmentation-workflow
+yarn cli link-mode      ./modes/seg-workflow
 ```
 
 This adds the two packages to `platform/app/pluginConfig.json`:
@@ -244,8 +244,8 @@ Then run or build the viewer as usual (`yarn dev`, `yarn build`). In a Docker bu
 after the sources are copied and before `build`:
 
 ```dockerfile
-RUN bun cli link-extension ./custom/extensions/segmentation-workflow
-RUN bun cli link-mode ./custom/modes/seg-workflow
+RUN bun cli link-extension ./extensions/segmentation-workflow
+RUN bun cli link-mode ./modes/seg-workflow
 RUN bun run build
 ```
 
@@ -277,34 +277,33 @@ rotate).
 ## Repository layout
 
 ```
-custom/
-├── extensions/segmentation-workflow/
-│   └── src/
-│       ├── index.tsx                       # extension definition; registers the panel module
-│       ├── components/
-│       │   ├── PatientPanel.tsx            # patient name / ID with copy buttons
-│       │   ├── PanelSegmentation.tsx       # segmentation panel + command handlers
-│       │   ├── CharacteristicsDialog.tsx   # the questionnaire (incl. dependsOn logic)
-│       │   ├── LoadingIndicator.tsx
-│       │   ├── DataRow/                    # forked segment row
-│       │   └── SegmentationTable/
-│       │       ├── SegmentationTable.tsx
-│       │       ├── SegmentationSegments.tsx
-│       │       ├── CustomDropdownMenuContent.tsx  # "Complete Segmentation" actions
-│       │       └── characteristicStore.ts  # zustand store of answers
-│       ├── services/
-│       │   ├── segment.ts                  # opens the dialog, applies label + color
-│       │   ├── onSegmentationComplete.ts   # orchestrates SEG + SR creation and storage
-│       │   └── dicom/
-│       │       ├── seg.ts                  # DICOM SEG generation
-│       │       ├── sr.ts                   # DICOM SR generation (TID 1500 shape)
-│       │       └── utils.ts                # OIDC user name → DICOM PN
-│       └── utils/                          # dialog helpers
-└── modes/seg-workflow/
-    └── src/
-        ├── index.tsx                       # mode factory, routes, toolbar sections
-        ├── initToolGroups.ts
-        └── toolbarButtons.ts
+extensions/segmentation-workflow/
+└── src/
+    ├── index.tsx                       # extension definition; registers the panel module
+    ├── components/
+    │   ├── PatientPanel.tsx            # patient name / ID with copy buttons
+    │   ├── PanelSegmentation.tsx       # segmentation panel + command handlers
+    │   ├── CharacteristicsDialog.tsx   # the questionnaire (incl. dependsOn logic)
+    │   ├── LoadingIndicator.tsx
+    │   ├── DataRow/                    # forked segment row
+    │   └── SegmentationTable/
+    │       ├── SegmentationTable.tsx
+    │       ├── SegmentationSegments.tsx
+    │       ├── CustomDropdownMenuContent.tsx  # "Complete Segmentation" actions
+    │       └── characteristicStore.ts  # zustand store of answers
+    ├── services/
+    │   ├── segment.ts                  # opens the dialog, applies label + color
+    │   ├── onSegmentationComplete.ts   # orchestrates SEG + SR creation and storage
+    │   └── dicom/
+    │       ├── seg.ts                  # DICOM SEG generation
+    │       ├── sr.ts                   # DICOM SR generation (TID 1500 shape)
+    │       └── utils.ts                # OIDC user name → DICOM PN
+    └── utils/                          # dialog helpers
+modes/seg-workflow/
+└── src/
+    ├── index.tsx                       # mode factory, routes, toolbar sections
+    ├── initToolGroups.ts
+    └── toolbarButtons.ts
 ```
 
 ---
@@ -312,7 +311,7 @@ custom/
 ## Known limitations
 
 - The mode imports the characteristic store from the extension through a **relative path**
-  (`../../../extensions/segmentation-workflow/src/...`), so the two packages must stay siblings in
+  (`../../extensions/segmentation-workflow/src/...`), so the two packages must stay siblings in
   the same checkout; they are not independently publishable as-is.
 - Answers live in memory only. They are not persisted across a page reload, and re-opening an
   already-stored SEG does **not** reload its SR answers into the panel — completing again produces
