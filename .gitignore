@@ -10,4 +10,7 @@
 !modes/
 !modes/**
 
+!images/
+!images/**
+
 node_modules/
