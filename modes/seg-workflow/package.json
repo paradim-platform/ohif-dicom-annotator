@@ -1,6 +1,6 @@
 {
   "name": "seg-workflow",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Segmentation workflow",
   "author": "Gabriel Couture",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "segmentation-workflow",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Allow users to make segmentation while capturing important information (e.g. Expert Name)",
   "author": "Gabriel Couture",
   "license": "MIT",
