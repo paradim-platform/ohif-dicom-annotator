@@ -1,19 +1,18 @@
 # OHIF DICOM Annotator
 
 An [OHIF Viewer](https://ohif.org/) extension + mode that lets a reader draw segmentations and, for
-each segment, answer a list of pre-defined, coded questions. When the reader is done, the tool
+each segment, answer a list of pre-defined questions. When the reader is done, the tool
 produces **two DICOM objects**:
 
 - a **DICOM SEG** (`Segmentation`) containing the labelmap;
 - a **DICOM SR** (`Structured Report`) containing the answers, each one linked back to the segment
   it describes.
 
-The questions, their allowed answers, their codes (SCT / RadLex / a local scheme) and their
-conditional display rules are entirely **data-driven**: they live in the OHIF app config, so a new
+The questions, their allowed answers, their semantic codes (SCT / RadLex / a local scheme) and their
+conditional display rules are entirely configurable: they live in the OHIF app config, so a new
 annotation protocol can be deployed by editing a config file — no rebuild of the extension needed.
 
-It was built for the PARADIM lung-screening project (CT nodule/cyst characterization), but nothing
-in the tool is lung-specific except the shipped example configuration.
+The app was built for annotation of a lung cancer screening image collection (CT nodule/cyst characterization), but the tool can be configured easily for other use-cases. 
 
 Developed and tested against **OHIF 3.11.1** (peer dependencies `^3.10.2`).
 
