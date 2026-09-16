@@ -12,7 +12,7 @@ The questions, their allowed answers, their semantic codes (SCT / RadLex / a loc
 conditional display rules are entirely configurable: they live in the OHIF app config, so a new
 annotation protocol can be deployed by editing a config file — no rebuild of the extension needed.
 
-The app was built for annotation of a lung cancer screening image collection (CT nodule/cyst characterization), but the tool can be configured easily for other use-cases. 
+The app was built for annotation of a lung cancer screening image collection (CT nodule/cyst characterization), but the tool can be configured easily for other use-cases. It was deployed on the PARADIM platform (https://doi.org/10.1007/s10278-025-01554-y).
 
 Developed and tested against **OHIF 3.11.1** (peer dependencies `^3.10.2`).
 
@@ -180,6 +180,9 @@ Finally, make sure the config you serve defines `characteristicOptionsList` (and
   SR.
 
 ---
+## How to cite
+
+Please use the DOI associated with releases. Associated paper will be published shortly.
 
 ## License
 
