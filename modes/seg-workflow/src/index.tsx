@@ -108,15 +108,15 @@ function modeFactory({ modeConfiguration }) {
     isValidMode: ({ modalities }) => {
       modalities = modalities.split('\\');
 
-      if (modalities.includes('CT')) {
+      if (modalities.includes('CT') || modalities.includes('MR')) {
         return {
           valid: true,
-          description: 'Segmentation-workflow only works for CT',
+          description: 'Segmentation-workflow only works for CT and MR',
         };
       }
       return {
         valid: false,
-        description: 'Segmentation-workflow only works for CT',
+        description: 'Segmentation-workflow only works for CT and MR',
       };
     },
     /**
