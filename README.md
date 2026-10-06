@@ -171,7 +171,7 @@ Finally, make sure the config you serve defines `characteristicOptionsList` (and
 - Answers are not persisted across a page reload, and re-opening an already-stored SEG does not
   reload its SR answers into the panel — completing again produces new SEG/SR instances rather than
   updating the previous ones.
-- The mode only applies to studies containing a CT series.
+- The mode only applies to studies containing a CT and MR series.
 - The example coding scheme `ParadimLungScreening2025` is a local, non-registered designator used
   for concepts with no SCT/RadLex equivalent. Replace it with your own registered scheme if the
   data leaves your institution.
