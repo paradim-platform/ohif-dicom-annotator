@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Couture"
+    given-names: "Gabriel"
+    orcid: "https://orcid.org/0000-0003-1832-6036"
+    affiliation: "Votre Institution ou Université"
+  - family-names: "Després"
+    given-names: "Philippe"
+    orcid: "https://orcid.org/0000-0002-4163-7353"
+title: "ohif-dicom-annotator"
+doi: "10.5281/zenodo.23215514"
+date-released: "2026-10-07"
+url: "https://github.com/paradim-platform/ohif-dicom-annotator"
