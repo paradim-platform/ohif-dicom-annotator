@@ -182,7 +182,7 @@ Finally, make sure the config you serve defines `characteristicOptionsList` (and
 ---
 ## How to cite
 
-Please use the DOI associated with releases. Associated paper will be published shortly.
+https://doi.org/10.5281/zenodo.23215514
 
 ## License
 
